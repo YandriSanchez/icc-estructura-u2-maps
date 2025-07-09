@@ -146,8 +146,14 @@ Un `TreeMap` **no usa** `hashCode()` ni `equals()` para determinar la unicidad d
 
 Si se usara un `HashMap` en lugar de `TreeMap`, entonces `hashCode()` y `equals()` en la clave serían necesarios para evitar colisiones.
 
+
 ---
 
 ### Conclusión
-Para administrar un directorio telefónico sin claves duplicadas y ordenado por nombre, la mejor solución es un **`TreeMap`**. Esto garantiza orden automático y eficiencia en operaciones de búsqueda y modificación.
+Para administrar un directorio telefónico sin claves duplicadas y ordenado por nombre, la mejor solución es un **`TreeMap`**. Esto garantiza orden automático y eficiencia en operaciones de búsqueda y modicar
 
+---
+
+### Console
+
+![Captura de pantalla 2025-07-09 091936.png](Captura%20de%20pantalla%202025-07-09%20091936.png)

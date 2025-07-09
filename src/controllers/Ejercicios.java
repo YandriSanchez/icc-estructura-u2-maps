@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Ejercicios {
 
@@ -28,7 +29,22 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (str1.length() != str2.length()) return false;
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (char c : str1.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : str2.toCharArray()) {
+            if (!map.containsKey(c)) return false;
+
+            map.put(c, map.get(c) - 1);
+            if (map.get(c) == 0) map.remove(c);
+        }
+
+        return map.isEmpty();
 
     }
 
@@ -48,7 +64,17 @@ public class Ejercicios {
      * Output: null
      */
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int complemento = objetivo - nums[i];
+            if (map.containsKey(complemento)) {
+                return new int[]{map.get(complemento), i};
+            }
+            map.put(nums[i], i);
+        }
+
+        return null;
     }
 
     /**
@@ -60,7 +86,13 @@ public class Ejercicios {
      * Output: {h=1, o=1, l=1, a=1}
      */
     public void contarCaracteres(String texto) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Map<Character, Integer> frecuencias = new HashMap<>();
+
+        for (char c : texto.toCharArray()) {
+            frecuencias.put(c, frecuencias.getOrDefault(c, 0) + 1);
+        }
+
+        System.out.println(frecuencias);
     }
 
     /**
@@ -72,6 +104,20 @@ public class Ejercicios {
      * Output: true
      */
     public boolean sonAnagramas(String palabra1, String palabra2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (palabra1.length() != palabra2.length()) return false;
+
+        Map<Character, Integer> contador = new HashMap<>();
+
+        for (char c : palabra1.toCharArray()) {
+            contador.put(c, contador.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : palabra2.toCharArray()) {
+            if (!contador.containsKey(c)) return false;
+            contador.put(c, contador.get(c) - 1);
+            if (contador.get(c) == 0) contador.remove(c);
+        }
+
+        return contador.isEmpty();
     }
 }
